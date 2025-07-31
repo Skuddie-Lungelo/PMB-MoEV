@@ -51,7 +51,8 @@ class FrontendTester:
     def test_main_page_accessibility(self):
         """Test if main page is accessible"""
         try:
-            response = requests.get(self.base_url, timeout=10)
+            headers = {'User-Agent': 'Mozilla/5.0 (compatible; TestBot/1.0)'}
+            response = requests.get(self.base_url, timeout=10, headers=headers)
             success = response.status_code == 200
             if success:
                 # Check for key elements in HTML
