@@ -50,22 +50,28 @@ class FrontendTester:
 
     def test_main_page_accessibility(self):
         """Test if main page is accessible"""
-        response = requests.get(self.base_url)
-        success = response.status_code == 200
-        if success:
-            # Check for key elements in HTML
-            html_content = response.text
-            has_title = "Living Hope Church" in html_content
-            has_root = 'id="root"' in html_content
-            has_react_script = "index.tsx" in html_content
-            
-            if has_title and has_root and has_react_script:
-                print("✅ HTML structure is correct")
-                return True
+        try:
+            response = requests.get(self.base_url, timeout=10)
+            success = response.status_code == 200
+            if success:
+                # Check for key elements in HTML
+                html_content = response.text
+                has_title = "Living Hope Church" in html_content
+                has_root = 'id="root"' in html_content
+                has_react_script = "index.tsx" in html_content
+                
+                print(f"✅ Status: {response.status_code}")
+                print(f"✅ Title found: {has_title}")
+                print(f"✅ Root element found: {has_root}")
+                print(f"✅ React script found: {has_react_script}")
+                
+                return has_title and has_root and has_react_script
             else:
-                print(f"❌ Missing elements - Title: {has_title}, Root: {has_root}, Script: {has_react_script}")
+                print(f"❌ HTTP Status: {response.status_code}")
                 return False
-        return False
+        except Exception as e:
+            print(f"❌ Request failed: {str(e)}")
+            return False
 
     def test_content_files_accessibility(self):
         """Test if JSON content files are accessible"""
