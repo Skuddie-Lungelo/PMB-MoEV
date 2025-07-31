@@ -1,0 +1,37 @@
+{
+  "hero": {
+    "title": "Welcome to Living Hope Church",
+    "subtitle": "A community of faith, hope, and love in the heart of our city",
+    "description": "We are a vibrant, welcoming church family committed to growing in our relationship with Jesus Christ and serving our community with love and compassion."
+  },
+  "story": {
+    "title": "Our Story",
+    "content": "Living Hope Church was founded with a vision to be a beacon of hope in our community. We believe that everyone has a place in God's family, and we strive to create an environment where people can experience the transforming love of Jesus Christ. Our church is built on the foundation of biblical truth, authentic relationships, and passionate worship."
+  },
+  "mission": {
+    "title": "Our Mission",
+    "content": "To glorify God by making disciples of Jesus Christ who love God wholeheartedly, love others unconditionally, and serve the world compassionately."
+  },
+  "vision": {
+    "title": "Our Vision",
+    "content": "We envision a community transformed by the gospel, where every person experiences the love, grace, and hope found in Jesus Christ."
+  },
+  "values": [
+    {
+      "title": "Biblical Truth",
+      "description": "We believe the Bible is God's Word and the ultimate authority for faith and life."
+    },
+    {
+      "title": "Authentic Community",
+      "description": "We value genuine relationships built on love, acceptance, and mutual support."
+    },
+    {
+      "title": "Passionate Worship",
+      "description": "We worship God with our whole hearts through music, prayer, and living out our faith."
+    },
+    {
+      "title": "Compassionate Service",
+      "description": "We serve others with the same love and compassion that Christ has shown us."
+    }
+  ]
+}
