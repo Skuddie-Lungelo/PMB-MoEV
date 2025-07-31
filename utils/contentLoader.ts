@@ -84,10 +84,10 @@ export interface ChurchInfo {
   smallGroups: string;
 }
 
-// Load content functions
+// Load content functions with correct paths
 export const loadAboutContent = async (): Promise<AboutContent> => {
   try {
-    const response = await fetch('/content/about.json');
+    const response = await fetch('/living-hope-church/content/about.json');
     return await response.json();
   } catch (error) {
     console.error('Error loading about content:', error);
@@ -117,7 +117,7 @@ export const loadAboutContent = async (): Promise<AboutContent> => {
 
 export const loadContactContent = async (): Promise<ContactContent> => {
   try {
-    const response = await fetch('/content/contact.json');
+    const response = await fetch('/living-hope-church/content/contact.json');
     return await response.json();
   } catch (error) {
     console.error('Error loading contact content:', error);
@@ -152,7 +152,7 @@ export const loadContactContent = async (): Promise<ContactContent> => {
 
 export const loadChurchInfo = async (): Promise<ChurchInfo> => {
   try {
-    const response = await fetch('/content/church-info.json');
+    const response = await fetch('/living-hope-church/content/church-info.json');
     return await response.json();
   } catch (error) {
     console.error('Error loading church info:', error);
