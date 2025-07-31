@@ -1,0 +1,31 @@
+{
+  "address": {
+    "street": "123 Hope Street",
+    "city": "Springfield",
+    "state": "State",
+    "zipCode": "12345",
+    "full": "123 Hope Street, Springfield, State 12345"
+  },
+  "phone": "(555) 123-HOPE",
+  "email": "info@livinghopechurch.org",
+  "website": "www.livinghopechurch.org",
+  "serviceTime": {
+    "sunday": {
+      "morning": "10:00 AM",
+      "evening": "6:00 PM"
+    },
+    "wednesday": {
+      "prayer": "7:00 PM"
+    }
+  },
+  "socialMedia": {
+    "facebook": "facebook.com/livinghopechurch",
+    "instagram": "@livinghopechurch",
+    "youtube": "youtube.com/livinghopechurch"
+  },
+  "officeHours": {
+    "weekdays": "9:00 AM - 5:00 PM",
+    "saturday": "By Appointment",
+    "sunday": "Closed"
+  }
+}
