@@ -1,0 +1,178 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Modern Earth Tones + Pink Accent Color Palette */
+:root {
+  /* Earth Tones */
+  --warm-stone: #f5f1eb;
+  --soft-sand: #e8ddd4;
+  --sage-green: #9caf88;
+  --earth-brown: #8b7355;
+  --deep-forest: #5d6d5b;
+  --charcoal: #3c3c3c;
+  
+  /* Pink Accent */
+  --pink-accent: #d4797a;
+  --pink-light: #e8a5a6; 
+  --pink-dark: #b85859;
+  
+  /* Neutrals */
+  --warm-white: #fdfcfa;
+  --soft-gray: #f7f5f3;
+}
+
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  color: var(--charcoal);
+  background-color: var(--warm-white);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Tailwind components */
+@layer components {
+  .btn-primary {
+    @apply bg-pink-500 hover:bg-pink-600 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-50;
+  }
+  
+  .btn-secondary {
+    @apply bg-stone-600 hover:bg-stone-700 text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-stone-400 focus:ring-opacity-50;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-pink-500 text-pink-600 hover:bg-pink-500 hover:text-white font-medium py-3 px-6 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-pink-400 focus:ring-opacity-50;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-stone-200 p-6 transition-all duration-300 hover:shadow-md hover:border-stone-300;
+  }
+  
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-stone-700 to-pink-600 bg-clip-text text-transparent;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Loading animation */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Chat interface styles */
+.chat-container {
+  @apply bg-gradient-to-br from-stone-50 to-pink-50;
+}
+
+.chat-message {
+  @apply max-w-xs sm:max-w-md p-3 rounded-lg shadow-sm;
+}
+
+.chat-message.user {
+  @apply bg-pink-500 text-white ml-auto;
+}
+
+.chat-message.ai {
+  @apply bg-white border border-stone-200 mr-auto;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: all 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+.heading-xl {
+  @apply text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight;
+}
+
+.heading-lg {
+  @apply text-3xl sm:text-4xl font-bold leading-tight;
+}
+
+.heading-md {
+  @apply text-2xl sm:text-3xl font-semibold leading-tight;
+}
+
+.text-muted {
+  @apply text-stone-600;
+}
+
+/* Responsive utilities */
+@media (max-width: 640px) {
+  .section-padding {
+    @apply py-12 px-4;
+  }
+}
