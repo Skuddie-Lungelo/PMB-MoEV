@@ -88,3 +88,45 @@ Remember: You represent Living Hope Church, so always maintain a Christ-like att
       const systemPrompt = this.buildSystemPrompt();
       
       const prompt = `${systemPrompt}
+
+Human Question: ${question}
+
+Please provide a helpful, warm, and informative response about Living Hope Church or the Christian faith. Keep your response conversational and welcoming.`;
+
+      const result = await this.model.generateContent(prompt);
+      const response = await result.response;
+      return response.text();
+    } catch (error) {
+      console.error('Error generating AI response:', error);
+      
+      // Fallback responses for common questions
+      const fallbackResponses = {
+        'service times': 'Our Sunday morning service is at 10:00 AM and evening service at 6:00 PM. We also have prayer meeting on Wednesday at 7:00 PM. We\'d love to have you join us!',
+        'location': 'We\'re located at 123 Hope Street, Springfield. Feel free to contact us at (555) 123-HOPE for directions or any questions!',
+        'beliefs': 'We believe in the Bible as God\'s Word, the Trinity, salvation through Jesus Christ, and the importance of living out our faith in community. You can learn more about our beliefs on our website or by visiting us!',
+        'welcome': 'Welcome to Living Hope Church! We\'re so glad you\'re interested in our church family. We\'d love to meet you and answer any questions you might have.'
+      };
+      
+      // Simple keyword matching for fallback
+      const lowerQuestion = question.toLowerCase();
+      for (const [key, response] of Object.entries(fallbackResponses)) {
+        if (lowerQuestion.includes(key)) {
+          return response;
+        }
+      }
+      
+      return "Thank you for your question! I'm currently having trouble connecting to generate a response. Please feel free to contact our church directly at (555) 123-HOPE or info@livinghopechurch.org, and we'll be happy to help you!";
+    }
+  }
+
+  async isServiceAvailable(): Promise<boolean> {
+    try {
+      const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY;
+      return apiKey && apiKey !== 'PLACEHOLDER_API_KEY';
+    } catch {
+      return false;
+    }
+  }
+}
+
+export const aiService = new AIService();
