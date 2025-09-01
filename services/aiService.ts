@@ -46,7 +46,7 @@ ${WHAT_WE_BELIEVE_TEXT}
 
 ${churchData?.detailedBeliefs ? `
 DETAILED BELIEFS:
-${Object.entries(churchData.detailedBeliefs).map(([key, belief]) => `
+${Object.entries(churchData.detailedBeliefs).map(([_, belief]) => `
 ${belief.title}:
 ${belief.content}
 `).join('\n')}
@@ -84,11 +84,7 @@ Remember: You represent Living Hope Church, so always maintain a Christ-like att
         const genAI = new (window as any).GoogleGenerativeAI(process.env.GEMINI_API_KEY || process.env.API_KEY);
         const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
         
-        const prompt = `${systemPrompt}
-
-Human Question: ${question}
-
-Please provide a helpful, warm, and informative response about Living Hope Church or the Christian faith. Keep your response conversational and welcoming.`;
+        const prompt = `${systemPrompt}\n\nHuman Question: ${question}\n\nPlease provide a helpful, warm, and informative response about Living Hope Church or the Christian faith. Keep your response conversational and welcoming.`;
 
         const result = await model.generateContent(prompt);
         const response = await result.response;
@@ -96,7 +92,8 @@ Please provide a helpful, warm, and informative response about Living Hope Churc
       } else {
         throw new Error('Gemini API not available');
       }
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Error generating AI response:', error);
       
       // Fallback responses for common questions
@@ -128,7 +125,7 @@ Please provide a helpful, warm, and informative response about Living Hope Churc
   async isServiceAvailable(): Promise<boolean> {
     try {
       const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY;
-      return apiKey && apiKey !== 'PLACEHOLDER_API_KEY';
+      return !!apiKey && apiKey !== 'PLACEHOLDER_API_KEY';
     } catch {
       return false;
     }
